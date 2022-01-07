@@ -1,42 +1,38 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main()
 {
     int n;
     cin>>n;
-    if(n==1)
+    if(n>=1 && n<=3)
     {
         cout<<"1"<<endl;
-    }else
+    }else if(n==4)
     {
-        int sums =0 ;
-        int Next = 1;
-        int deep =0;
-
-        if(n==2)
-        {
-            cout<<"2"<<endl;
-
-        }else
-        {
-          int deep = 0, Next = 3;
-          while(n>0)
-          {
-              int i;
-              for(i=1; i<=Next; i++)
-              {
-                  cout<<" # ";
-              }
-              cout<<""<<endl;
-              Next += i;
-              n = n -i;
-              deep++;
-          }
-
-          cout<<"Deep "<<deep<<endl;
-        }
-
+        cout<<"2"<<endl;
     }
+    else
+    {
+        vector<int>V;
+        V.push_back(1);
+        V.push_back(3);
+        int sum =4, sum2=4;
+        int i=2;
+        while(sum2<=n)
+        {
+            sum =i+1+V[i-1];
+            sum2 += sum;
+            i++;
+            V.push_back(sum);
 
+        }
+        if(sum2>=n){
+            cout<<V.size()-1<<endl;
+        }
+        else
+        {
+            cout<<V.size()<<endl;
+        }
+    }
 }
